@@ -1,0 +1,3926 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mama Cooked - Resep Makanan Nusantara</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Variabel Warna */
+      :root {
+        --pink-soft: #f8d7da;
+        --pink-medium: #f1b0b7;
+        --pink-dark: #e6919f;
+        --cream-light: #fff9f0;
+        --cream-medium: #f5e6d3;
+        --cream-dark: #ebd4b9;
+        --text-dark: #5a3e36;
+        --text-light: #7a5d54;
+        --shadow: rgba(149, 157, 165, 0.2);
+      }
+
+      /* Reset & Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--cream-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--pink-soft),
+          var(--cream-medium)
+        );
+        padding: 15px 0 0;
+        box-shadow: 0 4px 12px var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 15px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo i {
+        font-size: 2.5rem;
+        color: var(--pink-dark);
+      }
+
+      .logo-text h1 {
+        font-size: 2.2rem;
+        color: var(--text-dark);
+        font-weight: 700;
+      }
+
+      .logo-text p {
+        font-size: 1rem;
+        color: var(--text-light);
+        font-style: italic;
+      }
+
+      /* Search Bar */
+      .search-bar {
+        display: flex;
+        width: 40%;
+        max-width: 400px;
+      }
+
+      .search-bar input {
+        flex: 1;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 30px 0 0 30px;
+        font-size: 1rem;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-bar button {
+        padding: 12px 20px;
+        background-color: var(--pink-dark);
+        color: white;
+        border: none;
+        border-radius: 0 30px 30px 0;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-bar button:hover {
+        background-color: var(--pink-medium);
+      }
+
+      /* Navigation */
+      .nav-container {
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px 10px 0 0;
+        padding: 0 20px;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+        padding: 12px 5px;
+        border-radius: 5px;
+        position: relative;
+        display: inline-block;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: var(--pink-dark);
+      }
+
+      nav a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--pink-dark);
+        transition: all 0.3s ease;
+        border-radius: 3px;
+      }
+
+      nav a:hover:after,
+      nav a.active:after {
+        width: 100%;
+        left: 0;
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 60px 0;
+        text-align: center;
+        background: linear-gradient(
+          to right,
+          var(--pink-soft),
+          var(--cream-light)
+        );
+      }
+
+      .hero h2 {
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: var(--text-light);
+      }
+
+      /* Animation Bar */
+      .animation-bar {
+        background-color: var(--cream-medium);
+        padding: 15px 0;
+        margin: 30px 0;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .animation-content {
+        display: flex;
+        animation: scroll 30s linear infinite;
+        white-space: nowrap;
+      }
+
+      .animation-item {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 30px;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .animation-item i {
+        margin-right: 10px;
+        color: var(--pink-dark);
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* Recipe Grid */
+      .section-title {
+        text-align: center;
+        margin: 50px 0 30px;
+        font-size: 2.2rem;
+        color: var(--text-dark);
+        position: relative;
+      }
+
+      .section-title:after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 4px;
+        background-color: var(--pink-medium);
+        margin: 10px auto;
+        border-radius: 2px;
+      }
+
+      .recipes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .recipe-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .recipe-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .recipe-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .recipe-content {
+        padding: 20px;
+      }
+
+      .recipe-title {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: var(--text-dark);
+      }
+
+      .recipe-origin {
+        font-style: italic;
+        color: var(--text-light);
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+      }
+
+      .recipe-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .recipe-rating {
+        color: #ffc107;
+      }
+
+      .recipe-favorite {
+        color: var(--pink-dark);
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .recipe-favorite:hover,
+      .recipe-favorite.active {
+        color: #e74c3c;
+      }
+
+      .recipe-description {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .recipe-actions {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary {
+        background-color: var(--pink-dark);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--pink-medium);
+      }
+
+      .btn-secondary {
+        background-color: var(--cream-medium);
+        color: var(--text-dark);
+      }
+
+      .btn-secondary:hover {
+        background-color: var(--cream-dark);
+      }
+
+      /* Articles Section */
+      .articles-section {
+        background-color: var(--cream-medium);
+        padding: 50px 0;
+        margin: 50px 0;
+        border-radius: 15px;
+      }
+
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .article-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow);
+      }
+
+      .article-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .article-content {
+        padding: 20px;
+      }
+
+      .article-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--text-dark);
+      }
+
+      .article-excerpt {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      .read-more {
+        color: var(--pink-dark);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* Add Recipe Section */
+      .add-recipe {
+        text-align: center;
+        padding: 50px 0;
+        background: linear-gradient(
+          to right,
+          var(--cream-light),
+          var(--pink-soft)
+        );
+        border-radius: 15px;
+        margin: 50px 0;
+      }
+
+      .add-recipe h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+      }
+
+      .add-recipe p {
+        max-width: 600px;
+        margin: 0 auto 30px;
+        color: var(--text-light);
+      }
+
+      .btn-large {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--text-dark);
+        color: var(--cream-light);
+        padding: 40px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--pink-soft);
+      }
+
+      .footer-section p,
+      .footer-section a {
+        color: var(--cream-light);
+        margin-bottom: 10px;
+        display: block;
+        text-decoration: none;
+      }
+
+      .footer-section a:hover {
+        color: var(--pink-medium);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--cream-medium);
+        color: var(--text-dark);
+        border-radius: 50%;
+        transition: background-color 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--pink-medium);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+      }
+
+      /* Page Sections */
+      .page-section {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .page-section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* All Recipes Page */
+      .filter-section {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px var(--shadow);
+        margin-bottom: 30px;
+      }
+
+      .filter-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .filter-btn {
+        padding: 8px 15px;
+        background-color: var(--cream-medium);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .filter-btn.active {
+        background-color: var(--pink-dark);
+        color: white;
+      }
+
+      .filter-btn:hover {
+        background-color: var(--pink-medium);
+        color: white;
+      }
+
+      /* Recipe Detail Page */
+      .recipe-detail {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px var(--shadow);
+        margin-bottom: 30px;
+      }
+
+      .recipe-detail-header {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .recipe-detail-image {
+        width: 40%;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .recipe-detail-info {
+        flex: 1;
+      }
+
+      .recipe-detail-title {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: var(--text-dark);
+      }
+
+      .recipe-detail-origin {
+        font-style: italic;
+        color: var(--text-light);
+        margin-bottom: 15px;
+      }
+
+      .recipe-detail-meta {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .recipe-detail-meta div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .recipe-detail-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .ingredients-section,
+      .steps-section {
+        background-color: var(--cream-light);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .ingredients-section h3,
+      .steps-section h3 {
+        margin-bottom: 15px;
+        color: var(--pink-dark);
+      }
+
+      .ingredients-list,
+      .steps-list {
+        list-style-type: none;
+      }
+
+      .ingredients-list li,
+      .steps-list li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .ingredients-list li:before {
+        content: "•";
+        color: var(--pink-dark);
+        position: absolute;
+        left: 0;
+      }
+
+      .steps-list li {
+        counter-increment: step-counter;
+      }
+
+      .steps-list li:before {
+        content: counter(step-counter) ".";
+        color: var(--pink-dark);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      /* Saved Recipes Page */
+      .saved-recipes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .saved-recipe-card {
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow);
+        transition: transform 0.3s, box-shadow 0.3s;
+        position: relative;
+      }
+
+      .saved-recipe-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .remove-saved {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #e74c3c;
+        font-size: 1rem;
+      }
+
+      /* Article Detail Page */
+      .article-detail {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px var(--shadow);
+        margin-bottom: 30px;
+      }
+
+      .article-detail-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .article-detail-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+      }
+
+      .article-detail-content {
+        line-height: 1.8;
+      }
+
+      .article-detail-content p {
+        margin-bottom: 15px;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--pink-dark);
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      /* Comment Section Styles */
+      .comments-section {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 15px var(--shadow);
+        margin-top: 30px;
+      }
+
+      .comments-section h3 {
+        margin-bottom: 20px;
+        color: var(--pink-dark);
+        font-size: 1.5rem;
+      }
+
+      .comment-form {
+        margin-bottom: 30px;
+      }
+
+      .comment-form textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        resize: vertical;
+        min-height: 100px;
+        margin-bottom: 15px;
+        font-family: inherit;
+      }
+
+      .comment-form button {
+        background-color: var(--pink-dark);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .comment-form button:hover {
+        background-color: var(--pink-medium);
+      }
+
+      .comments-list {
+        margin-top: 30px;
+      }
+
+      .comment {
+        border-bottom: 1px solid #eee;
+        padding: 20px 0;
+      }
+
+      .comment:last-child {
+        border-bottom: none;
+      }
+
+      .comment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .comment-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--pink-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-weight: bold;
+        color: var(--pink-dark);
+      }
+
+      .comment-author {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .comment-date {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        margin-left: 10px;
+      }
+
+      .comment-content {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .comment-actions {
+        display: flex;
+        gap: 15px;
+      }
+
+      .comment-action {
+        background: none;
+        border: none;
+        color: var(--pink-dark);
+        cursor: pointer;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .comment-action:hover {
+        color: var(--pink-medium);
+      }
+
+      .replies {
+        margin-left: 55px;
+        margin-top: 15px;
+        border-left: 2px solid var(--cream-medium);
+        padding-left: 15px;
+      }
+
+      .reply-form {
+        margin-top: 15px;
+        display: none;
+      }
+
+      .reply-form.active {
+        display: block;
+      }
+
+      .reply-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        resize: vertical;
+        min-height: 80px;
+        margin-bottom: 10px;
+        font-family: inherit;
+      }
+
+      .reply-form button {
+        background-color: var(--cream-medium);
+        color: var(--text-dark);
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .reply-form button:hover {
+        background-color: var(--cream-dark);
+      }
+
+      /* Search Results Section */
+      .search-results {
+        margin-top: 30px;
+      }
+
+      .search-results h3 {
+        margin-bottom: 20px;
+        color: var(--text-dark);
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow);
+      }
+
+      /* Admin Login Styles */
+      .admin-login {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      .admin-login-btn {
+        background-color: var(--pink-dark);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+      }
+
+      .admin-login-btn:hover {
+        background-color: var(--pink-medium);
+        transform: scale(1.1);
+      }
+
+      .login-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .login-modal.active {
+        display: flex;
+      }
+
+      .login-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .login-form h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: var(--text-dark);
+      }
+
+      .login-form input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .login-form button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--pink-dark);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .login-form button:hover {
+        background-color: var(--pink-medium);
+      }
+
+      /* Admin Panel Styles */
+      .admin-panel {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--cream-light);
+        z-index: 1002;
+        overflow-y: auto;
+      }
+
+      .admin-panel.active {
+        display: block;
+      }
+
+      .admin-header {
+        background: linear-gradient(
+          135deg,
+          var(--pink-soft),
+          var(--cream-medium)
+        );
+        padding: 15px 0;
+        box-shadow: 0 4px 12px var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .admin-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .admin-nav h2 {
+        color: var(--text-dark);
+        font-size: 1.8rem;
+      }
+
+      .admin-tabs {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .admin-tab {
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .admin-tab.active {
+        background-color: white;
+        color: var(--pink-dark);
+      }
+
+      .admin-content {
+        padding: 30px 0;
+      }
+
+      .admin-section {
+        display: none;
+      }
+
+      .admin-section.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .admin-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px var(--shadow);
+      }
+
+      .admin-card h3 {
+        margin-bottom: 15px;
+        color: var(--pink-dark);
+        border-bottom: 2px solid var(--cream-medium);
+        padding-bottom: 10px;
+      }
+
+      .admin-list {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .admin-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .admin-item:last-child {
+        border-bottom: none;
+      }
+
+      .admin-item-info {
+        flex: 1;
+      }
+
+      .admin-item-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .admin-item-meta {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+
+      .admin-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .admin-btn {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+      }
+
+      .btn-edit {
+        background-color: var(--cream-medium);
+        color: var(--text-dark);
+      }
+
+      .btn-delete {
+        background-color: #e74c3c;
+        color: white;
+      }
+
+      .btn-edit:hover {
+        background-color: var(--cream-dark);
+      }
+
+      .btn-delete:hover {
+        background-color: #c0392b;
+      }
+
+      .admin-form {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px var(--shadow);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: inherit;
+      }
+
+      .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .form-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .btn-cancel {
+        background-color: var(--cream-medium);
+        color: var(--text-dark);
+      }
+
+      .btn-save {
+        background-color: var(--pink-dark);
+        color: white;
+      }
+
+      .comment-content-preview {
+        max-height: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .header-top {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .search-bar {
+          width: 80%;
+        }
+
+        nav ul {
+          gap: 20px;
+        }
+
+        .recipe-detail-header {
+          flex-direction: column;
+        }
+
+        .recipe-detail-image {
+          width: 100%;
+          max-height: 300px;
+        }
+
+        .recipe-detail-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2.2rem;
+        }
+
+        .recipes-grid,
+        .saved-recipes-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .animation-item {
+          margin: 0 15px;
+        }
+
+        .filter-options {
+          justify-content: center;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+
+        nav a {
+          font-size: 1rem;
+          padding: 8px 5px;
+        }
+
+        .replies {
+          margin-left: 20px;
+        }
+
+        .admin-tabs {
+          flex-wrap: wrap;
+        }
+
+        .admin-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .admin-actions {
+          margin-top: 10px;
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .logo {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+
+        .logo-text h1 {
+          font-size: 1.8rem;
+        }
+
+        .search-bar {
+          width: 100%;
+        }
+
+        .recipe-actions {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .recipe-actions .btn {
+          width: 100%;
+        }
+
+        .comment-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .comment-date {
+          margin-left: 0;
+          margin-top: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-top">
+          <div class="logo">
+            <i class="fas fa-utensils"></i>
+            <div class="logo-text">
+              <h1>Mama Cooked</h1>
+              <p>Rasa Nusantara, Cinta Mama</p>
+            </div>
+          </div>
+
+          <div class="search-bar">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Cari resep favoritmu..."
+            />
+            <button id="search-button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+
+        <div class="nav-container">
+          <nav>
+            <ul>
+              <li>
+                <a href="#" class="nav-link active" data-page="beranda"
+                  >Beranda</a
+                >
+              </li>
+              <li><a href="#" class="nav-link" data-page="resep">Resep</a></li>
+              <li>
+                <a href="#" class="nav-link" data-page="artikel">Artikel</a>
+              </li>
+              <li>
+                <a href="#" class="nav-link" data-page="simpan"
+                  >Resep Disimpan</a
+                >
+              </li>
+              <li>
+                <a href="#" class="nav-link" data-page="tentang-kontak"
+                  >Tentang & Kontak</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Beranda Page -->
+    <section id="beranda" class="page-section active">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <h2>Selamat Datang di Dunia Rasa Nusantara</h2>
+          <p>
+            Temukan resep-resep autentik dari seluruh penjuru Indonesia dengan
+            cita rasa yang menggugah selera
+          </p>
+
+          <!-- Animation Bar -->
+          <div class="animation-bar">
+            <div class="animation-content">
+              <div class="animation-item">
+                <i class="fas fa-star"></i> Rendang - Masakan Terenak di Dunia
+              </div>
+              <div class="animation-item">
+                <i class="fas fa-fire"></i> Sate Ayam - Juara di Hati Semua
+                Orang
+              </div>
+              <div class="animation-item">
+                <i class="fas fa-leaf"></i> Gado-gado - Sehat dan Lezat
+              </div>
+              <div class="animation-item">
+                <i class="fas fa-utensil-spoon"></i> Soto Ayam - Penghangat Jiwa
+              </div>
+              <div class="animation-item">
+                <i class="fas fa-pepper-hot"></i> Pempek - Kelezatan dari
+                Palembang
+              </div>
+              <div class="animation-item">
+                <i class="fas fa-fish"></i> Ikan Bakar - Cita Rica Pantai
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main class="container">
+        <!-- Featured Recipes -->
+        <h2 class="section-title">Resep Pilihan</h2>
+        <div class="recipes-grid">
+          <!-- Recipe Card 1 -->
+          <div class="recipe-card" data-id="rendang">
+            <img src="image/rendang.jpg" alt="Rendang" class="recipe-image" />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Rendang</h3>
+              <p class="recipe-origin">Masakan Minangkabau, Sumatera Barat</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>(4.5/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Rendang adalah masakan daging yang berasal dari Minangkabau.
+                Proses memasaknya memakan waktu berjam-jam dengan menggunakan
+                aneka rempah-rempah dan santan.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipe Card 2 -->
+          <div class="recipe-card" data-id="sate-ayam">
+            <img
+              src="image/sate-madura.jpg"
+              alt="Sate Ayam"
+              class="recipe-image"
+            />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Sate Ayam</h3>
+              <p class="recipe-origin">Masakan Jawa</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>(4.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Sate ayam adalah makanan khas Indonesia yang terdiri dari
+                potongan daging ayam yang ditusuk dengan tusukan bambu kemudian
+                dibakar dengan bumbu kacang atau kecap.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipe Card 3 -->
+          <div class="recipe-card" data-id="gado-gado">
+            <img
+              src="image/gadogado.jpg"
+              alt="Gado-gado"
+              class="recipe-image"
+            />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Gado-gado</h3>
+              <p class="recipe-origin">Masakan Betawi, Jakarta</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>(5.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Gado-gado adalah makanan khas Indonesia yang berupa
+                sayur-sayuran yang direbus dan dicampur menjadi satu, dengan
+                bumbu kacang atau saus dari kacang tanah.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Articles Section -->
+        <section class="articles-section">
+          <h2 class="section-title">Artikel & Tips Dapur</h2>
+          <div class="articles-grid">
+            <!-- Article 1 -->
+            <div class="article-card" data-id="tips-bumbu">
+              <img
+                src="image/bumbu.jpg"
+                alt="Tips Memilih Bumbu"
+                class="article-image"
+              />
+              <div class="article-content">
+                <h3 class="article-title">
+                  5 Tips Memilih Bumbu Dapur yang Berkualitas
+                </h3>
+                <p class="article-excerpt">
+                  Pelajari cara memilih bumbu dapur yang segar dan berkualitas
+                  untuk meningkatkan cita rasa masakan Anda.
+                </p>
+                <a href="#" class="read-more view-article"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="article-card" data-id="teknik-memasak">
+              <img
+                src="image/memasak.jpg"
+                alt="Teknik Memasak"
+                class="article-image"
+              />
+              <div class="article-content">
+                <h3 class="article-title">
+                  Teknik Memasak yang Wajib Dikuasai Pemula
+                </h3>
+                <p class="article-excerpt">
+                  Temukan teknik-teknik dasar memasak yang akan membantu Anda
+                  menjadi koki yang lebih baik di dapur.
+                </p>
+                <a href="#" class="read-more view-article"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="article-card" data-id="peralatan-dapur">
+              <img
+                src="image/peralatan.jpg"
+                alt="Peralatan Dapur"
+                class="article-image"
+              />
+              <div class="article-content">
+                <h3 class="article-title">
+                  Peralatan Dasar yang Harus Dimiliki Setiap Dapur
+                </h3>
+                <p class="article-excerpt">
+                  Simak daftar peralatan dapur esensial yang akan memudahkan
+                  aktivitas memasak Anda sehari-hari.
+                </p>
+                <a href="#" class="read-more view-article"
+                  >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Add Recipe Section -->
+        <section class="add-recipe">
+          <h3>Bagikan Resep Andalanmu!</h3>
+          <p>
+            Punya resep keluarga yang lezat? Bagikan dengan komunitas Mama
+            Cooked dan jadilah bagian dari pelestarian kuliner Nusantara.
+          </p>
+          <button class="btn btn-primary btn-large">Tambah Resep Baru</button>
+        </section>
+      </main>
+    </section>
+
+    <!-- Resep Page -->
+    <section id="resep" class="page-section">
+      <div class="container">
+        <h2 class="section-title">Semua Resep</h2>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+          <h3>Filter Resep</h3>
+          <div class="filter-options">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="sumatera">Sumatera</button>
+            <button class="filter-btn" data-filter="jawa">Jawa</button>
+            <button class="filter-btn" data-filter="bali">
+              Bali & Nusa Tenggara
+            </button>
+            <button class="filter-btn" data-filter="kalimantan">
+              Kalimantan
+            </button>
+            <button class="filter-btn" data-filter="sulawesi">Sulawesi</button>
+            <button class="filter-btn" data-filter="maluku-papua">
+              Maluku & Papua
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="search-results" class="search-results" style="display: none">
+          <h3>Hasil Pencarian</h3>
+          <div id="search-results-container"></div>
+        </div>
+
+        <!-- All Recipes Grid -->
+        <div class="recipes-grid" id="all-recipes-grid">
+          <!-- Recipe Card 1 -->
+          <div class="recipe-card" data-category="sumatera" data-id="rendang">
+            <img src="image/rendang.jpg" alt="Rendang" class="recipe-image" />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Rendang</h3>
+              <p class="recipe-origin">Masakan Minangkabau, Sumatera Barat</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>(4.5/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Rendang adalah masakan daging yang berasal dari Minangkabau.
+                Proses memasaknya memakan waktu berjam-jam dengan menggunakan
+                aneka rempah-rempah dan santan.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipe Card 2 -->
+          <div class="recipe-card" data-category="jawa" data-id="sate-ayam">
+            <img
+              src="image/sate-madura.jpg"
+              alt="Sate Ayam"
+              class="recipe-image"
+            />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Sate Ayam</h3>
+              <p class="recipe-origin">Masakan Jawa</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>(4.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Sate ayam adalah makanan khas Indonesia yang terdiri dari
+                potongan daging ayam yang ditusuk dengan tusukan bambu kemudian
+                dibakar dengan bumbu kacang atau kecap.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recipe Card 3 -->
+          <div class="recipe-card" data-category="jawa" data-id="gado-gado">
+            <img src="image/coto.jpg" alt="Gado-gado" class="recipe-image" />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Gado-gado</h3>
+              <p class="recipe-origin">Masakan Betawi, Jakarta</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>(5.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Gado-gado adalah makanan khas Indonesia yang berupa
+                sayur-sayuran yang direbus dan dicampur menjadi satu, dengan
+                bumbu kacang atau saus dari kacang tanah.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Additional Recipe Cards -->
+          <div class="recipe-card" data-category="bali" data-id="babi-guling">
+            <img
+              src="image/babi.guling.jpg"
+              alt="Babi Guling"
+              class="recipe-image"
+            />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Babi Guling</h3>
+              <p class="recipe-origin">Masakan Bali</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span>(5.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Babi guling adalah hidangan khas Bali yang terbuat dari babi
+                yang dibumbui dengan berbagai rempah dan dipanggang secara utuh.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="recipe-card"
+            data-category="sulawesi"
+            data-id="coto-makassar"
+          >
+            <img
+              src="image/coto.jpg"
+              alt="Coto Makassar"
+              class="recipe-image"
+            />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Coto Makassar</h3>
+              <p class="recipe-origin">Masakan Sulawesi Selatan</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span>(4.5/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Coto Makassar adalah hidangan sup daging sapi khas Makassar yang
+                disajikan dengan ketupat dan bumbu kacang yang khas.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="recipe-card" data-category="sumatera" data-id="pempek">
+            <img src="image/pempek.jpg" alt="Pempek" class="recipe-image" />
+            <div class="recipe-content">
+              <h3 class="recipe-title">Pempek</h3>
+              <p class="recipe-origin">Masakan Palembang, Sumatera Selatan</p>
+              <div class="recipe-meta">
+                <div class="recipe-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span>(4.0/5)</span>
+                </div>
+                <i class="far fa-heart recipe-favorite"></i>
+              </div>
+              <p class="recipe-description">
+                Pempek adalah makanan khas Palembang yang terbuat dari daging
+                ikan yang dihaluskan dicampur tepung sagu, kemudian disajikan
+                dengan cuko.
+              </p>
+              <div class="recipe-actions">
+                <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                <button class="btn btn-secondary save-recipe">Simpan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artikel Page -->
+    <section id="artikel" class="page-section">
+      <div class="container">
+        <h2 class="section-title">Artikel & Tips Dapur</h2>
+        <div class="articles-grid">
+          <!-- Article 1 -->
+          <div class="article-card" data-id="tips-bumbu">
+            <img
+              src="image/bumbu.jpg"
+              alt="Tips Memilih Bumbu"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                5 Tips Memilih Bumbu Dapur yang Berkualitas
+              </h3>
+              <p class="article-excerpt">
+                Pelajari cara memilih bumbu dapur yang segar dan berkualitas
+                untuk meningkatkan cita rasa masakan Anda.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="article-card" data-id="teknik-memasak">
+            <img
+              src="image/memasak.jpg"
+              alt="Teknik Memasak"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                Teknik Memasak yang Wajib Dikuasai Pemula
+              </h3>
+              <p class="article-excerpt">
+                Temukan teknik-teknik dasar memasak yang akan membantu Anda
+                menjadi koki yang lebih baik di dapur.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="article-card" data-id="peralatan-dapur">
+            <img
+              src="image/peralatan.jpg"
+              alt="Peralatan Dapur"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                Peralatan Dasar yang Harus Dimiliki Setiap Dapur
+              </h3>
+              <p class="article-excerpt">
+                Simak daftar peralatan dapur esensial yang akan memudahkan
+                aktivitas memasak Anda sehari-hari.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Additional Articles -->
+          <div class="article-card" data-id="penyimpanan-bahan">
+            <img
+              src="image/simpan.jpg"
+              alt="Penyimpanan Bahan Makanan"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                Cara Menyimpan Bahan Makanan Agar Tahan Lama
+              </h3>
+              <p class="article-excerpt">
+                Tips dan trik menyimpan berbagai jenis bahan makanan agar tetap
+                segar dan tahan lama.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card" data-id="rempah-nusantara">
+            <img
+              src="image/rempah.jpg"
+              alt="Rempah Nusantara"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                Mengenal Rempah-Rempah Khas Nusantara dan Manfaatnya
+              </h3>
+              <p class="article-excerpt">
+                Jelajahi kekayaan rempah-rempah Indonesia dan manfaat kesehatan
+                yang terkandung di dalamnya.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card" data-id="menu-sehat">
+            <img
+              src="image/bergizi.jpg"
+              alt="Menu Sehat"
+              class="article-image"
+            />
+            <div class="article-content">
+              <h3 class="article-title">
+                Menu Sehat Bergizi dengan Bahan Lokal Indonesia
+              </h3>
+              <p class="article-excerpt">
+                Inspirasi menu makanan sehat dan bergizi menggunakan bahan-bahan
+                lokal yang mudah ditemukan.
+              </p>
+              <a href="#" class="read-more view-article"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resep Disimpan Page -->
+    <section id="simpan" class="page-section">
+      <div class="container">
+        <h2 class="section-title">Resep Disimpan</h2>
+        <div id="saved-recipes-container">
+          <!-- Saved recipes will be displayed here -->
+          <p
+            id="no-saved-recipes"
+            style="
+              text-align: center;
+              padding: 40px;
+              background-color: white;
+              border-radius: 10px;
+              box-shadow: 0 5px 15px var(--shadow);
+            "
+          >
+            Belum ada resep yang disimpan. Simpan resep favorit Anda untuk
+            melihatnya di sini.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tentang & Kontak Page -->
+    <section id="tentang-kontak" class="page-section">
+      <div class="container">
+        <h2 class="section-title">Tentang & Kontak Kami</h2>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+          "
+        >
+          <!-- Tentang Kami Section -->
+          <div
+            style="
+              background-color: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 5px 15px var(--shadow);
+            "
+          >
+            <h3 style="color: var(--pink-dark); margin-bottom: 20px">
+              Tentang Mama Cooked
+            </h3>
+            <p style="margin-bottom: 20px; line-height: 1.8">
+              Mama Cooked adalah platform resep makanan Nusantara yang
+              didedikasikan untuk melestarikan dan membagikan kekayaan kuliner
+              Indonesia. Kami percaya bahwa setiap hidangan Nusantara memiliki
+              cerita dan cita rasa yang unik, yang patut untuk diketahui dan
+              dinikmati oleh semua orang.
+            </p>
+            <p style="margin-bottom: 20px; line-height: 1.8">
+              Didirikan pada tahun 2023, Mama Cooked hadir sebagai wadah bagi
+              para pecinta masakan Indonesia untuk berbagi resep keluarga, tips
+              memasak, dan cerita di balik setiap hidangan. Kami berkomitmen
+              untuk menyajikan resep-resep autentik dengan panduan yang mudah
+              diikuti, sehingga siapa pun dapat menghadirkan cita rasa Nusantara
+              di dapur mereka sendiri.
+            </p>
+            <h4 style="color: var(--pink-dark); margin: 30px 0 15px">
+              Visi Kami
+            </h4>
+            <p style="margin-bottom: 20px; line-height: 1.8">
+              Menjadi platform terdepan dalam melestarikan dan mempromosikan
+              kekayaan kuliner Nusantara kepada masyarakat Indonesia dan dunia.
+            </p>
+            <h4 style="color: var(--pink-dark); margin: 30px 0 15px">
+              Misi Kami
+            </h4>
+            <ul
+              style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8"
+            >
+              <li>
+                Mengumpulkan dan mendokumentasikan resep-resep autentik dari
+                seluruh penjuru Indonesia
+              </li>
+              <li>
+                Menyediakan panduan memasak yang mudah diikuti untuk berbagai
+                tingkat keahlian
+              </li>
+              <li>
+                Membangun komunitas pecinta masakan Indonesia yang aktif dan
+                saling berbagi
+              </li>
+              <li>
+                Memperkenalkan kekayaan rempah dan bahan lokal Indonesia kepada
+                dunia
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kontak Kami Section -->
+          <div
+            style="
+              background-color: white;
+              padding: 30px;
+              border-radius: 15px;
+              box-shadow: 0 5px 15px var(--shadow);
+            "
+          >
+            <h3 style="color: var(--pink-dark); margin-bottom: 20px">
+              Hubungi Kami
+            </h3>
+            <div style="margin-bottom: 20px">
+              <p>
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="color: var(--pink-dark); margin-right: 10px"
+                ></i>
+                Jl. Kuliner Nusantara No. 123, Jakarta
+              </p>
+              <p>
+                <i
+                  class="fas fa-phone"
+                  style="color: var(--pink-dark); margin-right: 10px"
+                ></i>
+                (021) 1234-5678
+              </p>
+              <p>
+                <i
+                  class="fas fa-envelope"
+                  style="color: var(--pink-dark); margin-right: 10px"
+                ></i>
+                info@mamacooked.com
+              </p>
+            </div>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <h4 style="color: var(--pink-dark); margin: 30px 0 15px">
+              Kirim Pesan
+            </h4>
+            <form>
+              <div style="margin-bottom: 15px">
+                <label style="display: block; margin-bottom: 5px">Nama</label>
+                <input
+                  type="text"
+                  style="
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 15px">
+                <label style="display: block; margin-bottom: 5px">Email</label>
+                <input
+                  type="email"
+                  style="
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                  "
+                />
+              </div>
+              <div style="margin-bottom: 15px">
+                <label style="display: block; margin-bottom: 5px">Pesan</label>
+                <textarea
+                  style="
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    height: 120px;
+                  "
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%">
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recipe Detail Page -->
+    <section id="recipe-detail" class="page-section">
+      <div class="container">
+        <a href="#" class="back-button" id="back-to-recipes"
+          ><i class="fas fa-arrow-left"></i> Kembali ke Resep</a
+        >
+        <div id="recipe-detail-content">
+          <!-- Recipe detail content will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Detail Page -->
+    <section id="article-detail" class="page-section">
+      <div class="container">
+        <a href="#" class="back-button" id="back-to-articles"
+          ><i class="fas fa-arrow-left"></i> Kembali ke Artikel</a
+        >
+        <div id="article-detail-content">
+          <!-- Article detail content will be inserted here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Mama Cooked</h3>
+            <p>
+              Platform resep makanan Nusantara yang menghadirkan cita rasa
+              autentik dari seluruh penjuru Indonesia dengan sentuhan kasih
+              sayang seorang mama.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Link Cepat</h3>
+            <a href="#" class="nav-link" data-page="beranda">Beranda</a>
+            <a href="#" class="nav-link" data-page="resep">Resep</a>
+            <a href="#" class="nav-link" data-page="artikel">Artikel</a>
+            <a href="#" class="nav-link" data-page="simpan">Resep Disimpan</a>
+            <a href="#" class="nav-link" data-page="tentang-kontak"
+              >Tentang & Kontak</a
+            >
+          </div>
+
+          <div class="footer-section">
+            <h3>Kategori Resep</h3>
+            <a href="#" class="filter-link" data-filter="sumatera"
+              >Masakan Sumatera</a
+            >
+            <a href="#" class="filter-link" data-filter="jawa">Masakan Jawa</a>
+            <a href="#" class="filter-link" data-filter="bali"
+              >Masakan Bali & Nusa Tenggara</a
+            >
+            <a href="#" class="filter-link" data-filter="kalimantan"
+              >Masakan Kalimantan</a
+            >
+            <a href="#" class="filter-link" data-filter="sulawesi"
+              >Masakan Sulawesi</a
+            >
+            <a href="#" class="filter-link" data-filter="maluku-papua"
+              >Masakan Maluku & Papua</a
+            >
+          </div>
+
+          <div class="footer-section">
+            <h3>Kontak Kami</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Jl. Kuliner Nusantara No.
+              123, Jakarta
+            </p>
+            <p><i class="fas fa-phone"></i> (021) 1234-5678</p>
+            <p><i class="fas fa-envelope"></i> info@mamacooked.com</p>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Mama Cooked. Semua Hak Cipta Dilindungi.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Admin Login Button -->
+    <div class="admin-login">
+      <button class="admin-login-btn" id="admin-login-btn">
+        <i class="fas fa-user-cog"></i>
+      </button>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="login-modal" id="login-modal">
+      <div class="login-form">
+        <h3>Login Admin</h3>
+        <input
+          type="password"
+          id="admin-password"
+          placeholder="Masukkan kata sandi admin"
+        />
+        <button id="login-submit">Masuk</button>
+        <p
+          id="login-error"
+          style="
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+          "
+        >
+          Kata sandi salah!
+        </p>
+      </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="admin-panel">
+      <div class="admin-header">
+        <div class="container">
+          <div class="admin-nav">
+            <h2>Panel Admin Mama Cooked</h2>
+            <button id="admin-logout" class="btn btn-primary">Keluar</button>
+          </div>
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="recipes">
+              Kelola Resep
+            </button>
+            <button class="admin-tab" data-tab="articles">
+              Kelola Artikel
+            </button>
+            <button class="admin-tab" data-tab="comments">
+              Kelola Komentar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container admin-content">
+        <!-- Kelola Resep Section -->
+        <div class="admin-section active" id="recipes-section">
+          <div class="admin-card">
+            <h3>Tambah Resep Baru</h3>
+            <form id="add-recipe-form" class="admin-form">
+              <div class="form-group">
+                <label for="recipe-title">Judul Resep</label>
+                <input type="text" id="recipe-title" required />
+              </div>
+              <div class="form-group">
+                <label for="recipe-origin">Asal Daerah</label>
+                <input type="text" id="recipe-origin" required />
+              </div>
+              <div class="form-group">
+                <label for="recipe-image">URL Gambar</label>
+                <input type="text" id="recipe-image" required />
+              </div>
+              <div class="form-group">
+                <label for="recipe-rating">Rating (0-5)</label>
+                <input
+                  type="number"
+                  id="recipe-rating"
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="recipe-description">Deskripsi</label>
+                <textarea id="recipe-description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipe-ingredients"
+                  >Bahan-bahan (pisahkan dengan baris baru)</label
+                >
+                <textarea id="recipe-ingredients" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipe-steps"
+                  >Langkah-langkah (pisahkan dengan baris baru)</label
+                >
+                <textarea id="recipe-steps" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipe-category">Kategori</label>
+                <select id="recipe-category" required>
+                  <option value="sumatera">Sumatera</option>
+                  <option value="jawa">Jawa</option>
+                  <option value="bali">Bali & Nusa Tenggara</option>
+                  <option value="kalimantan">Kalimantan</option>
+                  <option value="sulawesi">Sulawesi</option>
+                  <option value="maluku-papua">Maluku & Papua</option>
+                </select>
+              </div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="admin-btn btn-cancel"
+                  id="cancel-recipe"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="admin-btn btn-save">
+                  Simpan Resep
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <h3>Daftar Resep</h3>
+            <div class="admin-list" id="recipes-list">
+              <!-- Recipe list will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Kelola Artikel Section -->
+        <div class="admin-section" id="articles-section">
+          <div class="admin-card">
+            <h3>Tambah Artikel Baru</h3>
+            <form id="add-article-form" class="admin-form">
+              <div class="form-group">
+                <label for="article-title">Judul Artikel</label>
+                <input type="text" id="article-title" required />
+              </div>
+              <div class="form-group">
+                <label for="article-image">URL Gambar</label>
+                <input type="text" id="article-image" required />
+              </div>
+              <div class="form-group">
+                <label for="article-content">Konten Artikel</label>
+                <textarea id="article-content" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="admin-btn btn-cancel"
+                  id="cancel-article"
+                >
+                  Batal
+                </button>
+                <button type="submit" class="admin-btn btn-save">
+                  Simpan Artikel
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-card">
+            <h3>Daftar Artikel</h3>
+            <div class="admin-list" id="articles-list">
+              <!-- Article list will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Kelola Komentar Section -->
+        <div class="admin-section" id="comments-section">
+          <div class="admin-card">
+            <h3>Daftar Komentar</h3>
+            <div class="admin-list" id="comments-list">
+              <!-- Comments list will be populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Data for recipes
+      const recipesData = {
+        rendang: {
+          title: "Rendang",
+          origin: "Masakan Minangkabau, Sumatera Barat",
+          image:
+            "https://via.placeholder.com/600x400/FF9999/FFFFFF?text=Rendang",
+          rating: 4.5,
+          description:
+            "Rendang adalah masakan daging yang berasal dari Minangkabau. Proses memasaknya memakan waktu berjam-jam dengan menggunakan aneka rempah-rempah dan santan.",
+          ingredients: [
+            "1 kg daging sapi, potong sesuai selera",
+            "2 liter santan dari 2 butir kelapa",
+            "5 lembar daun jeruk",
+            "3 batang serai, memarkan",
+            "5 lembar daun salam",
+            "2 cm lengkuas, memarkan",
+            "2 sdm gula merah",
+            "1 sdt garam",
+            "1/2 sdt merica bubuk",
+            "Bumbu halus:",
+            "15 butir bawang merah",
+            "8 siung bawang putih",
+            "10 buah cabai merah keriting",
+            "5 buah cabai rawit (sesuai selera)",
+            "3 cm jahe",
+            "3 cm kunyit",
+            "5 butir kemiri",
+            "1 sdt ketumbar",
+          ],
+          steps: [
+            "Tumis bumbu halus bersama daun jeruk, serai, daun salam, dan lengkuas hingga harum.",
+            "Masukkan daging sapi, aduk hingga berubah warna.",
+            "Tuangkan santan, masak dengan api kecil sambil diaduk sesekali hingga santan menyusut dan berminyak.",
+            "Tambahkan gula merah, garam, dan merica. Aduk rata.",
+            "Masak terus dengan api kecil hingga daging empuk dan kuah mengental serta berwarna kecoklatan.",
+            "Koreksi rasa, angkat dan sajikan.",
+          ],
+          category: "sumatera",
+        },
+        "sate-ayam": {
+          title: "Sate Ayam",
+          origin: "Masakan Jawa",
+          image:
+            "https://via.placeholder.com/600x400/99CC99/FFFFFF?text=Sate+Ayam",
+          rating: 4.0,
+          description:
+            "Sate ayam adalah makanan khas Indonesia yang terdiri dari potongan daging ayam yang ditusuk dengan tusukan bambu kemudian dibakar dengan bumbu kacang atau kecap.",
+          ingredients: [
+            "500 gram daging ayam fillet, potong dadu",
+            "Tusuk sate secukupnya",
+            "3 sdm kecap manis",
+            "1 sdm minyak sayur",
+            "1 sdt garam",
+            "1/2 sdt merica bubuk",
+            "Bumbu kacang:",
+            "200 gram kacang tanah goreng, haluskan",
+            "3 siung bawang putih, haluskan",
+            "5 buah cabai merah keriting (sesuai selera)",
+            "2 sdm kecap manis",
+            "1 sdt gula merah",
+            "1/2 sdt garam",
+            "300 ml air",
+            "2 sdm minyak untuk menumis",
+          ],
+          steps: [
+            "Lumuri potongan ayam dengan kecap manis, minyak sayur, garam, dan merica. Diamkan selama 30 menit.",
+            "Tusuk daging ayam dengan tusukan sate.",
+            "Panggang sate di atas bara api atau teflon hingga matang sambil dibolak-balik.",
+            "Untuk bumbu kacang: tumis bawang putih dan cabai hingga harum.",
+            "Masukkan kacang tanah yang sudah dihaluskan, tambahkan air, kecap manis, gula merah, dan garam.",
+            "Masak dengan api kecil hingga mengental, koreksi rasa.",
+            "Sajikan sate dengan bumbu kacang dan irisan bawang merah.",
+          ],
+          category: "jawa",
+        },
+        "gado-gado": {
+          title: "Gado-gado",
+          origin: "Masakan Betawi, Jakarta",
+          image:
+            "https://via.placeholder.com/600x400/9999FF/FFFFFF?text=Gado-gado",
+          rating: 5.0,
+          description:
+            "Gado-gado adalah makanan khas Indonesia yang berupa sayur-sayuran yang direbus dan dicampur menjadi satu, dengan bumbu kacang atau saus dari kacang tanah.",
+          ingredients: [
+            "100 gram kangkung, siangi",
+            "100 gram tauge, siangi",
+            "100 gram kacang panjang, potong 3 cm",
+            "2 buah mentimun, iris tipis",
+            "2 buah kentang, rebus, kupas, iris",
+            "2 buah telur rebus, belah dua",
+            "100 gram tahu, goreng, potong dadu",
+            "100 gram tempe, goreng, potong dadu",
+            "Kerupuk untuk pelengkap",
+            "Bumbu kacang:",
+            "200 gram kacang tanah goreng, haluskan",
+            "3 siung bawang putih",
+            "5 buah cabai merah keriting (sesuai selera)",
+            "2 sdm gula merah",
+            "1 sdt garam",
+            "1 sdt air asam jawa",
+            "300 ml air",
+            "2 sdm kecap manis",
+          ],
+          steps: [
+            "Rebus sayuran (kangkung, tauge, kacang panjang) secara terpisah hingga layu. Tiriskan.",
+            "Untuk bumbu kacang: haluskan bawang putih dan cabai.",
+            "Campur kacang tanah halus dengan bumbu halus, tambahkan air, gula merah, garam, air asam jawa, dan kecap manis.",
+            "Masak bumbu dengan api kecil sambil diaduk hingga mengental.",
+            "Tata sayuran rebus, kentang, tahu, tempe, dan telur di piring.",
+            "Siram dengan bumbu kacang, taburi dengan kerupuk.",
+            "Sajikan segera.",
+          ],
+          category: "jawa",
+        },
+        "babi-guling": {
+          title: "Babi Guling",
+          origin: "Masakan Bali",
+          image:
+            "https://via.placeholder.com/600x400/FFCC99/FFFFFF?text=Babi+Guling",
+          rating: 5.0,
+          description:
+            "Babi guling adalah hidangan khas Bali yang terbuat dari babi yang dibumbui dengan berbagai rempah dan dipanggang secara utuh.",
+          ingredients: [
+            "1 ekor babi muda (10-15 kg)",
+            "5 lembar daun salam",
+            "5 batang serai, memarkan",
+            "3 liter air kelapa",
+            "Bumbu halus:",
+            "20 siung bawang putih",
+            "15 butir bawang merah",
+            "10 cm kunyit, bakar",
+            "10 cm jahe",
+            "10 cm lengkuas",
+            "5 butir kemiri, sangrai",
+            "2 sdm ketumbar",
+            "1 sdt jintan",
+            "5 buah cabai merah besar (opsional)",
+            "Garam dan merica secukupnya",
+          ],
+          steps: [
+            "Bersihkan babi, buang isi perutnya, cuci bersih.",
+            "Lumuri seluruh bagian dalam dan luar babi dengan bumbu halus.",
+            "Isi perut babi dengan daun salam dan serai.",
+            "Jahit perut babi dengan tusuk gigi besar atau tali.",
+            "Panaskan oven dengan suhu 180°C.",
+            "Panggang babi selama 3-4 jam sambil sesekali diolesi dengan air kelapa.",
+            "Setelah matang, angkat dan biarkan sebentar sebelum dipotong.",
+            "Sajikan dengan nasi dan sambal matah.",
+          ],
+          category: "bali",
+        },
+        "coto-makassar": {
+          title: "Coto Makassar",
+          origin: "Masakan Sulawesi Selatan",
+          image:
+            "https://via.placeholder.com/600x400/CCCCFF/FFFFFF?text=Coto+Makassar",
+          rating: 4.5,
+          description:
+            "Coto Makassar adalah hidangan sup daging sapi khas Makassar yang disajikan dengan ketupat dan bumbu kacang yang khas.",
+          ingredients: [
+            "500 gram daging sapi (sandung lamur/sengkel)",
+            "200 gram jeroan sapi (paru, hati, babat), rebus hingga empuk",
+            "3 liter air",
+            "3 batang serai, memarkan",
+            "5 lembar daun salam",
+            "5 cm lengkuas, memarkan",
+            "Bumbu halus:",
+            "10 siung bawang putih",
+            "8 butir bawang merah",
+            "1 sdm ketumbar",
+            "1 sdt jintan",
+            "1 sdt merica",
+            "3 butir kemiri, sangrai",
+            "5 cm jahe",
+            "Garam secukupnya",
+            "Pelengkap:",
+            "Ketupat/lontong",
+            "Daun bawang iris",
+            "Bawang goreng",
+            "Sambal rawit",
+            "Kecap manis",
+          ],
+          steps: [
+            "Rebus daging sapi dengan air hingga empuk. Angkat, potong-potong, sisihkan kaldu.",
+            "Tumis bumbu halus hingga harum, masukkan ke dalam kaldu.",
+            "Tambahkan serai, daun salam, dan lengkuas. Masak dengan api kecil.",
+            "Masukkan daging dan jeroan yang sudah dipotong-potong.",
+            "Masak hingga bumbu meresap dan kuah sedikit menyusut.",
+            "Sajikan coto dengan ketupat/lontong, taburi daun bawang dan bawang goreng.",
+            "Sajikan dengan sambal rawit dan kecap manis.",
+          ],
+          category: "sulawesi",
+        },
+        pempek: {
+          title: "Pempek",
+          origin: "Masakan Palembang, Sumatera Selatan",
+          image:
+            "https://via.placeholder.com/600x400/CCFFCC/FFFFFF?text=Pempek",
+          rating: 4.0,
+          description:
+            "Pempek adalah makanan khas Palembang yang terbuat dari daging ikan yang dihaluskan dicampur tepung sagu, kemudian disajikan dengan cuko.",
+          ingredients: [
+            "500 gram daging ikan tenggiri, haluskan",
+            "200 gram tepung sagu/tapioka",
+            "100 ml air es",
+            "1 butir telur",
+            "1 sdt garam",
+            "1/2 sdt merica bubuk",
+            "1/2 sdt gula pasir",
+            "2 siung bawang putih, haluskan",
+            "Cuko (kuah pempek):",
+            "500 gram gula merah, sisir",
+            "5 siung bawang putih, haluskan",
+            "10 buah cabai rawit (sesuai selera)",
+            "1 liter air",
+            "3 sdm air asam jawa",
+            "1 sdt garam",
+            "1 sdt cuka",
+          ],
+          steps: [
+            "Campur daging ikan, bawang putih, garam, merica, dan gula. Aduk rata.",
+            "Tambahkan telur, aduk kembali.",
+            "Masukkan tepung sagu sedikit demi sedikit sambil diuleni.",
+            "Tambahkan air es sedikit demi sedikit hingga adonan kalis.",
+            "Bentuk adonan sesuai selera (kapal selam, lenjer, dll).",
+            "Rebus dalam air mendidih hingga mengapung. Angkat, tiriskan.",
+            "Untuk cuko: rebus gula merah dengan air hingga larut.",
+            "Tambahkan bawang putih halus, cabai rawit, garam, air asam jawa, dan cuka.",
+            "Masak dengan api kecil hingga mendidih dan sedikit mengental.",
+            "Goreng pempek yang sudah direbus hingga kecoklatan.",
+            "Sajikan pempek dengan cuko dan irisan mentimun.",
+          ],
+          category: "sumatera",
+        },
+      };
+
+      // Data for articles
+      const articlesData = {
+        "tips-bumbu": {
+          title: "5 Tips Memilih Bumbu Dapur yang Berkualitas",
+          image:
+            "https://via.placeholder.com/800x400/FFCC99/FFFFFF?text=Tips+Bumbu",
+          content: `
+                    <p>Memilih bumbu dapur yang berkualitas adalah kunci untuk menghasilkan masakan yang lezat. Berikut adalah 5 tips untuk memilih bumbu dapur yang terbaik:</p>
+                    
+                    <h4>1. Perhatikan Warna dan Aroma</h4>
+                    <p>Bumbu segar memiliki warna yang cerah dan aroma yang kuat. Hindari bumbu yang warnanya sudah kusam atau aromanya sudah berkurang karena menandakan bumbu sudah tidak segar.</p>
+                    
+                    <h4>2. Pilih Bumbu yang Masih Utuh</h4>
+                    <p>Untuk bumbu kering seperti lada, ketumbar, atau jintan, pilih yang masih dalam bentuk utuh daripada yang sudah digiling. Bumbu utuh akan bertahan lebih lama dan lebih harum ketika digiling sendiri.</p>
+                    
+                    <h4>3. Perhatikan Kemasan</h4>
+                    <p>Pilih bumbu dengan kemasan yang rapat dan kedap udara. Kemasan yang baik akan melindungi bumbu dari kelembaban dan serangga.</p>
+                    
+                    <h4>4. Cek Tanggal Kadaluarsa</h4>
+                    <p>Selalu periksa tanggal kadaluarsa pada kemasan bumbu. Bumbu yang sudah kadaluarsa tidak hanya kurang harum tetapi juga bisa berbahaya untuk kesehatan.</p>
+                    
+                    <h4>5. Beli dalam Jumlah Sedikit</h4>
+                    <p>Untuk menjaga kesegaran, beli bumbu dalam jumlah sedikit sesuai kebutuhan. Bumbu yang disimpan terlalu lama akan kehilangan cita rasanya.</p>
+                    
+                    <p>Dengan menerapkan tips ini, Anda dapat memastikan bahwa masakan Anda selalu memiliki cita rasa yang optimal.</p>
+                `,
+        },
+        "teknik-memasak": {
+          title: "Teknik Memasak yang Wajib Dikuasai Pemula",
+          image:
+            "https://via.placeholder.com/800x400/CCCCFF/FFFFFF?text=Teknik+Memasak",
+          content: `
+                    <p>Memasak adalah seni yang membutuhkan penguasaan teknik dasar. Berikut adalah beberapa teknik memasak yang wajib dikuasai oleh pemula:</p>
+                    
+                    <h4>1. Merebus (Boiling)</h4>
+                    <p>Merebus adalah teknik memasak dengan cara merendam bahan makanan dalam air mendidih. Teknik ini cocok untuk memasak sayuran, pasta, atau telur.</p>
+                    
+                    <h4>2. Menggoreng (Frying)</h4>
+                    <p>Menggoreng adalah teknik memasak dengan minyak panas. Terdapat dua jenis: menggoreng dangkal (shallow frying) dan menggoreng rendam (deep frying).</p>
+                    
+                    <h4>3. Menumis (Sautéing)</h4>
+                    <p>Menumis adalah teknik memasak dengan sedikit minyak dan api besar. Cocok untuk memasak bumbu atau sayuran dalam waktu singkat.</p>
+                    
+                    <h4>4. Mengukus (Steaming)</h4>
+                    <p>Mengukus adalah teknik memasak dengan uap air panas. Teknik ini sehat karena tidak menggunakan minyak dan mempertahankan nutrisi dalam makanan.</p>
+                    
+                    <h4>5. Memanggang (Baking/Roasting)</h4>
+                    <p>Memanggang adalah teknik memasak dengan udara panas di dalam oven. Cocok untuk kue, roti, atau daging.</p>
+                    
+                    <p>Dengan menguasai teknik-teknik dasar ini, Anda akan lebih percaya diri dalam memasak berbagai hidangan.</p>
+                `,
+        },
+        "peralatan-dapur": {
+          title: "Peralatan Dasar yang Harus Dimiliki Setiap Dapur",
+          image:
+            "https://via.placeholder.com/800x400/CCFFCC/FFFFFF?text=Peralatan+Dapur",
+          content: `
+                    <p>Memiliki peralatan dapur yang tepat akan memudahkan aktivitas memasak Anda. Berikut adalah daftar peralatan dasar yang harus dimiliki setiap dapur:</p>
+                    
+                    <h4>1. Pisau Dapur yang Tajam</h4>
+                    <p>Pisau adalah alat paling penting di dapur. Pastikan Anda memiliki setidaknya pisau chef untuk memotong sayuran dan daging, serta pisau paring untuk pekerjaan detail.</p>
+                    
+                    <h4>2. Talenan</h4>
+                    <p>Gunakan talenan yang terbuat dari kayu atau plastik food grade. Sebaiknya gunakan talenan terpisah untuk bahan mentah dan matang untuk menghindari kontaminasi.</p>
+                    
+                    <h4>3. Panci dan Wajan</h4>
+                    <p>Investasikan pada set panci dan wajan berkualitas. Setidaknya Anda membutuhkan panci untuk merebus, wajan untuk menumis, dan panci besar untuk memasak dalam jumlah banyak.</p>
+                    
+                    <h4>4. Spatula dan Sendok Kayu</h4>
+                    <p>Spatula dan sendok kayu diperlukan untuk mengaduk dan membalik makanan. Hindari menggunakan alat logam pada wajan anti lengket untuk mencegah goresan.</p>
+                    
+                    <h4>5. Kompor dan Oven</h4>
+                    <p>Kompor adalah jantung dapur. Jika memungkinkan, lengkapi dengan oven untuk memanggang dan memanaskan makanan.</p>
+                    
+                    <p>Dengan peralatan dasar ini, Anda sudah siap untuk memulai petualangan memasak Anda!</p>
+                `,
+        },
+        "penyimpanan-bahan": {
+          title: "Cara Menyimpan Bahan Makanan Agar Tahan Lama",
+          image:
+            "https://via.placeholder.com/800x400/FFCCCC/FFFFFF?text=Penyimpanan+Bahan",
+          content: `
+                    <p>Menyimpan bahan makanan dengan benar dapat memperpanjang masa simpannya dan menjaga kualitasnya. Berikut adalah tips menyimpan berbagai jenis bahan makanan:</p>
+                    
+                    <h4>1. Sayuran Hijau</h4>
+                    <p>Bungkus sayuran hijau dengan kertas atau handuk kering sebelum dimasukkan ke kulkas. Hindari mencuci sayuran sebelum disimpan karena kelembaban dapat mempercepat pembusukan.</p>
+                    
+                    <h4>2. Bawang dan Kentang</h4>
+                    <p>Simpan bawang dan kentang di tempat yang sejuk, kering, dan gelap. Jangan menyimpannya di kulkas karena dapat mengubah tekstur dan rasa.</p>
+                    
+                    <h4>3. Daging dan Ikan</h4>
+                    <p>Simpan daging dan ikan di freezer jika tidak akan digunakan dalam 1-2 hari. Bungkus rapat dengan plastik atau wadah kedap udara untuk mencegah freezer burn.</p>
+                    
+                    <h4>4. Bumbu Kering</h4>
+                    <p>Simpan bumbu kering dalam wadah kedap udara di tempat yang sejuk dan gelap. Hindari menyimpannya di dekat kompor karena panas dapat mengurangi kualitas bumbu.</p>
+                    
+                    <h4>5. Minyak dan Lemak</h4>
+                    <p>Simpan minyak di tempat yang sejuk dan gelap. Minyak zaitun dan minyak kacang sebaiknya disimpan di kulkas setelah dibuka.</p>
+                    
+                    <p>Dengan menyimpan bahan makanan dengan benar, Anda dapat mengurangi pemborosan dan selalu memiliki bahan segar untuk memasak.</p>
+                `,
+        },
+        "rempah-nusantara": {
+          title: "Mengenal Rempah-Rempah Khas Nusantara dan Manfaatnya",
+          image:
+            "https://via.placeholder.com/800x400/CCFFFF/FFFFFF?text=Rempah+Nusantara",
+          content: `
+                    <p>Indonesia dikenal sebagai surga rempah-rempah. Berikut adalah beberapa rempah khas Nusantara beserta manfaat kesehatannya:</p>
+                    
+                    <h4>1. Kunyit</h4>
+                    <p>Kunyit mengandung kurkumin yang memiliki sifat anti-inflamasi dan antioksidan. Rempah ini sering digunakan dalam masakan seperti rendang dan kari.</p>
+                    
+                    <h4>2. Jahe</h4>
+                    <p>Jahe dikenal dapat meredakan mual dan memiliki sifat anti-inflamasi. Jahe segar atau bubuk banyak digunakan dalam masakan dan minuman tradisional.</p>
+                    
+                    <h4>3. Lengkuas</h4>
+                    <p>Lengkuas memiliki aroma yang khas dan sering digunakan dalam masakan Padang. Rempah ini diketahui memiliki sifat antijamur dan antibakteri.</p>
+                    
+                    <h4>4. Serai</h4>
+                    <p>Serai tidak hanya memberikan aroma segar pada masakan tetapi juga memiliki sifat antimikroba dan dapat membantu meredakan kecemasan.</p>
+                    
+                    <h4>5. Daun Salam</h4>
+                    <p>Daun salam memberikan aroma harum pada masakan dan diketahui memiliki sifat antioksidan serta dapat membantu mengontrol gula darah.</p>
+                    
+                    <p>Dengan mengenal rempah-rempah Nusantara, kita tidak hanya dapat menikmati kelezatan masakan tetapi juga mendapatkan manfaat kesehatan yang terkandung di dalamnya.</p>
+                `,
+        },
+        "menu-sehat": {
+          title: "Menu Sehat Bergizi dengan Bahan Lokal Indonesia",
+          image:
+            "https://via.placeholder.com/800x400/FFFFCC/FFFFFF?text=Menu+Sehat",
+          content: `
+                    <p>Menyusun menu sehat tidak harus mahal. Dengan bahan-bahan lokal Indonesia, kita dapat membuat hidangan yang bergizi dan lezat. Berikut adalah beberapa ide menu sehat:</p>
+                    
+                    <h4>1. Gado-gado</h4>
+                    <p>Gado-gado adalah salad khas Indonesia yang kaya serat dari berbagai sayuran. Gunakan bumbu kacang dengan sedikit gula untuk versi yang lebih sehat.</p>
+                    
+                    <h4>2. Sayur Asem</h4>
+                    <p>Sayur asem adalah sup segar yang terbuat dari berbagai sayuran dengan kuah asam. Hidangan ini rendah kalori dan kaya vitamin.</p>
+                    
+                    <h4>3. Pepes Ikan</h4>
+                    <p>Pepes ikan adalah cara sehat untuk mengolah ikan karena menggunakan metode mengukus dengan bumbu alami. Ikan kaya akan protein dan omega-3.</p>
+                    
+                    <h4>4. Urap Sayuran</h4>
+                    <p>Urap adalah hidangan sayuran rebus dengan parutan kelapa dan bumbu. Kelapa memberikan lemak sehat dan sayuran memberikan serat.</p>
+                    
+                    <h4>5. Soto Ayam Bening</h4>
+                    <p>Soto ayam bening dengan kaldu ayam alami, daging ayam tanpa kulit, dan sayuran segar adalah pilihan menu sehat yang mengenyangkan.</p>
+                    
+                    <p>Dengan kreativitas, bahan lokal Indonesia dapat diolah menjadi menu sehat yang tidak kalah dengan hidangan modern.</p>
+                `,
+        },
+      };
+
+      // Data for comments (stored in localStorage)
+      function getCommentsData() {
+        return JSON.parse(localStorage.getItem("recipeComments")) || {};
+      }
+
+      function saveCommentsData(comments) {
+        localStorage.setItem("recipeComments", JSON.stringify(comments));
+      }
+
+      // Initialize comments for each recipe if not exists
+      function initializeComments() {
+        const commentsData = getCommentsData();
+        const recipeIds = Object.keys(recipesData);
+
+        recipeIds.forEach((recipeId) => {
+          if (!commentsData[recipeId]) {
+            commentsData[recipeId] = [
+              {
+                id: 1,
+                author: "Sari Indah",
+                content:
+                  "Resepnya sangat mudah diikuti! Saya sudah mencoba dan hasilnya enak sekali. Terima kasih untuk resepnya.",
+                date: "2023-10-15",
+                replies: [
+                  {
+                    id: 1,
+                    author: "Admin Mama Cooked",
+                    content:
+                      "Senang mendengarnya! Terima kasih sudah mencoba resep kami.",
+                    date: "2023-10-16",
+                  },
+                ],
+              },
+              {
+                id: 2,
+                author: "Budi Santoso",
+                content:
+                  "Saya sudah lama mencari resep rendang yang autentik seperti ini. Bumbunya pas dan rasanya sangat khas.",
+                date: "2023-10-12",
+                replies: [],
+              },
+            ];
+          }
+        });
+
+        saveCommentsData(commentsData);
+      }
+
+      // Navigation Functionality
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Remove active class from all links
+          document.querySelectorAll(".nav-link").forEach((l) => {
+            l.classList.remove("active");
+          });
+
+          // Add active class to clicked link
+          this.classList.add("active");
+
+          // Hide all pages
+          document.querySelectorAll(".page-section").forEach((page) => {
+            page.classList.remove("active");
+          });
+
+          // Show selected page
+          const pageId = this.getAttribute("data-page");
+          document.getElementById(pageId).classList.add("active");
+
+          // If going to saved recipes page, update the display
+          if (pageId === "simpan") {
+            displaySavedRecipes();
+          }
+
+          // Scroll to top
+          window.scrollTo(0, 0);
+        });
+      });
+
+      // Filter Functionality for Recipes Page
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Remove active class from all filter buttons
+          document.querySelectorAll(".filter-btn").forEach((b) => {
+            b.classList.remove("active");
+          });
+
+          // Add active class to clicked button
+          this.classList.add("active");
+
+          // Get filter value
+          const filter = this.getAttribute("data-filter");
+
+          // Show/hide recipes based on filter
+          document.querySelectorAll(".recipe-card").forEach((card) => {
+            if (
+              filter === "all" ||
+              card.getAttribute("data-category") === filter
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Filter links in footer
+      document.querySelectorAll(".filter-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // Navigate to recipes page
+          document.querySelectorAll(".nav-link").forEach((l) => {
+            l.classList.remove("active");
+          });
+
+          document
+            .querySelector('.nav-link[data-page="resep"]')
+            .classList.add("active");
+
+          document.querySelectorAll(".page-section").forEach((page) => {
+            page.classList.remove("active");
+          });
+
+          document.getElementById("resep").classList.add("active");
+
+          // Apply filter
+          const filter = this.getAttribute("data-filter");
+
+          document.querySelectorAll(".filter-btn").forEach((b) => {
+            b.classList.remove("active");
+          });
+
+          document
+            .querySelector(`.filter-btn[data-filter="${filter}"]`)
+            .classList.add("active");
+
+          document.querySelectorAll(".recipe-card").forEach((card) => {
+            if (card.getAttribute("data-category") === filter) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+
+          // Scroll to top
+          window.scrollTo(0, 0);
+        });
+      });
+
+      // Favorite Toggle Functionality
+      document.querySelectorAll(".recipe-favorite").forEach((icon) => {
+        icon.addEventListener("click", function () {
+          this.classList.toggle("far");
+          this.classList.toggle("fas");
+          this.classList.toggle("active");
+        });
+      });
+
+      // Search Functionality
+      const searchInput = document.getElementById("search-input");
+      const searchButton = document.getElementById("search-button");
+      const searchResults = document.getElementById("search-results");
+      const searchResultsContainer = document.getElementById(
+        "search-results-container"
+      );
+      const allRecipesGrid = document.getElementById("all-recipes-grid");
+
+      searchButton.addEventListener("click", function () {
+        performSearch();
+      });
+
+      searchInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          performSearch();
+        }
+      });
+
+      function performSearch() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        if (query) {
+          // Hide all recipes grid
+          allRecipesGrid.style.display = "none";
+
+          // Show search results section
+          searchResults.style.display = "block";
+
+          // Filter recipes based on query
+          const filteredRecipes = Object.keys(recipesData).filter(
+            (recipeId) => {
+              const recipe = recipesData[recipeId];
+              return (
+                recipe.title.toLowerCase().includes(query) ||
+                recipe.origin.toLowerCase().includes(query) ||
+                recipe.description.toLowerCase().includes(query)
+              );
+            }
+          );
+
+          // Display search results
+          if (filteredRecipes.length > 0) {
+            let resultsHTML = '<div class="recipes-grid">';
+
+            filteredRecipes.forEach((recipeId) => {
+              const recipe = recipesData[recipeId];
+              resultsHTML += `
+                            <div class="recipe-card" data-id="${recipeId}">
+                                <img src="${recipe.image.replace(
+                                  "600x400",
+                                  "300x200"
+                                )}" alt="${
+                recipe.title
+              }" class="recipe-image" />
+                                <div class="recipe-content">
+                                    <h3 class="recipe-title">${
+                                      recipe.title
+                                    }</h3>
+                                    <p class="recipe-origin">${
+                                      recipe.origin
+                                    }</p>
+                                    <div class="recipe-meta">
+                                        <div class="recipe-rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="${
+                                              recipe.rating === 5
+                                                ? "fas"
+                                                : recipe.rating >= 4.5
+                                                ? "fas fa-star-half-alt"
+                                                : "far"
+                                            } fa-star"></i>
+                                            <span>(${recipe.rating}/5)</span>
+                                        </div>
+                                        <i class="far fa-heart recipe-favorite"></i>
+                                    </div>
+                                    <p class="recipe-description">${
+                                      recipe.description
+                                    }</p>
+                                    <div class="recipe-actions">
+                                        <button class="btn btn-primary view-recipe">Lihat Resep</button>
+                                        <button class="btn btn-secondary save-recipe">Simpan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+            });
+
+            resultsHTML += "</div>";
+            searchResultsContainer.innerHTML = resultsHTML;
+
+            // Add event listeners to new recipe cards
+            document
+              .querySelectorAll("#search-results .view-recipe")
+              .forEach((button) => {
+                button.addEventListener("click", function () {
+                  const recipeCard = this.closest(".recipe-card");
+                  const recipeId = recipeCard.getAttribute("data-id");
+                  showRecipeDetail(recipeId);
+                });
+              });
+
+            document
+              .querySelectorAll("#search-results .save-recipe")
+              .forEach((button) => {
+                button.addEventListener("click", function () {
+                  const recipeCard = this.closest(".recipe-card");
+                  const recipeId = recipeCard.getAttribute("data-id");
+                  saveRecipe(recipeId);
+                });
+              });
+          } else {
+            searchResultsContainer.innerHTML = `
+                        <div class="no-results">
+                            <h3>Tidak ada hasil ditemukan untuk "${query}"</h3>
+                            <p>Coba gunakan kata kunci yang berbeda atau periksa ejaan Anda.</p>
+                        </div>
+                    `;
+          }
+        } else {
+          // If search query is empty, show all recipes
+          allRecipesGrid.style.display = "grid";
+          searchResults.style.display = "none";
+        }
+      }
+
+      // Add Recipe Button
+      document
+        .querySelector(".btn-large")
+        .addEventListener("click", function () {
+          alert(
+            "Fitur tambah resep akan membuka form untuk mengunggah resep baru"
+          );
+        });
+
+      // View Recipe Detail
+      document.querySelectorAll(".view-recipe").forEach((button) => {
+        button.addEventListener("click", function () {
+          const recipeCard = this.closest(".recipe-card");
+          const recipeId = recipeCard.getAttribute("data-id");
+          showRecipeDetail(recipeId);
+        });
+      });
+
+      // View Article Detail
+      document.querySelectorAll(".view-article").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const articleCard = this.closest(".article-card");
+          const articleId = articleCard.getAttribute("data-id");
+          showArticleDetail(articleId);
+        });
+      });
+
+      // Back to Recipes
+      document
+        .getElementById("back-to-recipes")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelectorAll(".page-section").forEach((page) => {
+            page.classList.remove("active");
+          });
+          document.getElementById("resep").classList.add("active");
+
+          // Update navigation
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+          });
+          document
+            .querySelector('.nav-link[data-page="resep"]')
+            .classList.add("active");
+        });
+
+      // Back to Articles
+      document
+        .getElementById("back-to-articles")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelectorAll(".page-section").forEach((page) => {
+            page.classList.remove("active");
+          });
+          document.getElementById("artikel").classList.add("active");
+
+          // Update navigation
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.classList.remove("active");
+          });
+          document
+            .querySelector('.nav-link[data-page="artikel"]')
+            .classList.add("active");
+        });
+
+      // Save Recipe Functionality
+      document.querySelectorAll(".save-recipe").forEach((button) => {
+        button.addEventListener("click", function () {
+          const recipeCard = this.closest(".recipe-card");
+          const recipeId = recipeCard.getAttribute("data-id");
+          saveRecipe(recipeId);
+        });
+      });
+
+      // Function to show recipe detail
+      function showRecipeDetail(recipeId) {
+        const recipe = recipesData[recipeId];
+        if (!recipe) return;
+
+        const recipeDetailContent = document.getElementById(
+          "recipe-detail-content"
+        );
+        const commentsData = getCommentsData();
+        const comments = commentsData[recipeId] || [];
+
+        recipeDetailContent.innerHTML = `
+                <div class="recipe-detail">
+                    <div class="recipe-detail-header">
+                        <img src="${recipe.image}" alt="${
+          recipe.title
+        }" class="recipe-detail-image">
+                        <div class="recipe-detail-info">
+                            <h1 class="recipe-detail-title">${recipe.title}</h1>
+                            <p class="recipe-detail-origin">${recipe.origin}</p>
+                            <div class="recipe-detail-meta">
+                                <div><i class="fas fa-star" style="color: #ffc107;"></i> ${
+                                  recipe.rating
+                                }/5</div>
+                                <div><i class="fas fa-clock"></i> 60-90 menit</div>
+                                <div><i class="fas fa-utensils"></i> 4-6 porsi</div>
+                            </div>
+                            <p>${recipe.description}</p>
+                        </div>
+                    </div>
+                    <div class="recipe-detail-content">
+                        <div class="ingredients-section">
+                            <h3>Bahan-bahan</h3>
+                            <ul class="ingredients-list">
+                                ${recipe.ingredients
+                                  .map((ingredient) => `<li>${ingredient}</li>`)
+                                  .join("")}
+                            </ul>
+                        </div>
+                        <div class="steps-section">
+                            <h3>Cara Membuat</h3>
+                            <ol class="steps-list">
+                                ${recipe.steps
+                                  .map((step) => `<li>${step}</li>`)
+                                  .join("")}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Comments Section -->
+                <div class="comments-section">
+                    <h3>Komentar (${comments.length})</h3>
+                    
+                    <!-- Comment Form -->
+                    <div class="comment-form">
+                        <textarea id="comment-text" placeholder="Tulis komentar Anda..."></textarea>
+                        <button id="submit-comment" data-recipe-id="${recipeId}">Kirim Komentar</button>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div class="comments-list">
+                        ${comments
+                          .map(
+                            (comment) => `
+                            <div class="comment" data-comment-id="${
+                              comment.id
+                            }">
+                                <div class="comment-header">
+                                    <div class="comment-avatar">${comment.author.charAt(
+                                      0
+                                    )}</div>
+                                    <div>
+                                        <span class="comment-author">${
+                                          comment.author
+                                        }</span>
+                                        <span class="comment-date">${
+                                          comment.date
+                                        }</span>
+                                    </div>
+                                </div>
+                                <div class="comment-content">
+                                    ${comment.content}
+                                </div>
+                                <div class="comment-actions">
+                                    <button class="comment-action reply-btn" data-comment-id="${
+                                      comment.id
+                                    }">
+                                        <i class="fas fa-reply"></i> Balas
+                                    </button>
+                                </div>
+                                
+                                <!-- Reply Form -->
+                                <div class="reply-form" id="reply-form-${
+                                  comment.id
+                                }">
+                                    <textarea placeholder="Tulis balasan..."></textarea>
+                                    <button class="submit-reply" data-comment-id="${
+                                      comment.id
+                                    }">Kirim Balasan</button>
+                                </div>
+                                
+                                <!-- Replies -->
+                                ${
+                                  comment.replies && comment.replies.length > 0
+                                    ? `
+                                    <div class="replies">
+                                        ${comment.replies
+                                          .map(
+                                            (reply) => `
+                                            <div class="comment">
+                                                <div class="comment-header">
+                                                    <div class="comment-avatar">${reply.author.charAt(
+                                                      0
+                                                    )}</div>
+                                                    <div>
+                                                        <span class="comment-author">${
+                                                          reply.author
+                                                        }</span>
+                                                        <span class="comment-date">${
+                                                          reply.date
+                                                        }</span>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-content">
+                                                    ${reply.content}
+                                                </div>
+                                            </div>
+                                        `
+                                          )
+                                          .join("")}
+                                    </div>
+                                `
+                                    : ""
+                                }
+                            </div>
+                        `
+                          )
+                          .join("")}
+                    </div>
+                </div>
+            `;
+
+        // Add event listeners for comment functionality
+        document
+          .getElementById("submit-comment")
+          .addEventListener("click", function () {
+            const recipeId = this.getAttribute("data-recipe-id");
+            const commentText = document
+              .getElementById("comment-text")
+              .value.trim();
+
+            if (commentText) {
+              addComment(recipeId, commentText);
+            }
+          });
+
+        document.querySelectorAll(".reply-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const commentId = this.getAttribute("data-comment-id");
+            const replyForm = document.getElementById(
+              `reply-form-${commentId}`
+            );
+            replyForm.classList.toggle("active");
+          });
+        });
+
+        document.querySelectorAll(".submit-reply").forEach((button) => {
+          button.addEventListener("click", function () {
+            const commentId = this.getAttribute("data-comment-id");
+            const replyForm = document.getElementById(
+              `reply-form-${commentId}`
+            );
+            const replyText = replyForm.querySelector("textarea").value.trim();
+
+            if (replyText) {
+              addReply(recipeId, commentId, replyText);
+            }
+          });
+        });
+
+        // Show recipe detail page
+        document.querySelectorAll(".page-section").forEach((page) => {
+          page.classList.remove("active");
+        });
+        document.getElementById("recipe-detail").classList.add("active");
+      }
+
+      // Function to add a new comment
+      function addComment(recipeId, commentText) {
+        const commentsData = getCommentsData();
+        const comments = commentsData[recipeId] || [];
+
+        // Generate a simple ID based on timestamp
+        const newCommentId = Date.now();
+
+        const newComment = {
+          id: newCommentId,
+          author: "Pengguna", // In a real app, this would be the logged-in user
+          content: commentText,
+          date: new Date().toISOString().split("T")[0],
+          replies: [],
+        };
+
+        comments.unshift(newComment);
+        commentsData[recipeId] = comments;
+        saveCommentsData(commentsData);
+
+        // Refresh the recipe detail view to show the new comment
+        showRecipeDetail(recipeId);
+      }
+
+      // Function to add a reply to a comment
+      function addReply(recipeId, commentId, replyText) {
+        const commentsData = getCommentsData();
+        const comments = commentsData[recipeId] || [];
+
+        // Find the comment to reply to
+        const commentIndex = comments.findIndex(
+          (comment) => comment.id == commentId
+        );
+
+        if (commentIndex !== -1) {
+          // Generate a simple ID based on timestamp
+          const newReplyId = Date.now();
+
+          const newReply = {
+            id: newReplyId,
+            author: "Pengguna", // In a real app, this would be the logged-in user
+            content: replyText,
+            date: new Date().toISOString().split("T")[0],
+          };
+
+          comments[commentIndex].replies.push(newReply);
+          commentsData[recipeId] = comments;
+          saveCommentsData(commentsData);
+
+          // Refresh the recipe detail view to show the new reply
+          showRecipeDetail(recipeId);
+        }
+      }
+
+      // Function to show article detail
+      function showArticleDetail(articleId) {
+        const article = articlesData[articleId];
+        if (!article) return;
+
+        const articleDetailContent = document.getElementById(
+          "article-detail-content"
+        );
+        articleDetailContent.innerHTML = `
+                <div class="article-detail">
+                    <img src="${article.image}" alt="${article.title}" class="article-detail-image">
+                    <h1 class="article-detail-title">${article.title}</h1>
+                    <div class="article-detail-content">
+                        ${article.content}
+                    </div>
+                </div>
+            `;
+
+        // Show article detail page
+        document.querySelectorAll(".page-section").forEach((page) => {
+          page.classList.remove("active");
+        });
+        document.getElementById("article-detail").classList.add("active");
+      }
+
+      // Function to save recipe
+      function saveRecipe(recipeId) {
+        let savedRecipes =
+          JSON.parse(localStorage.getItem("savedRecipes")) || [];
+
+        if (!savedRecipes.includes(recipeId)) {
+          savedRecipes.push(recipeId);
+          localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+          alert("Resep berhasil disimpan!");
+        } else {
+          alert("Resep sudah ada dalam daftar simpanan.");
+        }
+      }
+
+      // Function to display saved recipes
+      function displaySavedRecipes() {
+        const savedRecipesContainer = document.getElementById(
+          "saved-recipes-container"
+        );
+        const noSavedRecipes = document.getElementById("no-saved-recipes");
+        const savedRecipes =
+          JSON.parse(localStorage.getItem("savedRecipes")) || [];
+
+        if (savedRecipes.length === 0) {
+          noSavedRecipes.style.display = "block";
+          savedRecipesContainer.innerHTML = "";
+          savedRecipesContainer.appendChild(noSavedRecipes);
+          return;
+        }
+
+        noSavedRecipes.style.display = "none";
+
+        let savedRecipesHTML = '<div class="saved-recipes-grid">';
+
+        savedRecipes.forEach((recipeId) => {
+          const recipe = recipesData[recipeId];
+          if (recipe) {
+            savedRecipesHTML += `
+                        <div class="saved-recipe-card" data-id="${recipeId}">
+                            <button class="remove-saved" onclick="removeSavedRecipe('${recipeId}')"><i class="fas fa-times"></i></button>
+                            <img src="${recipe.image.replace(
+                              "600x400",
+                              "300x200"
+                            )}" alt="${recipe.title}" class="recipe-image">
+                            <div class="recipe-content">
+                                <h3 class="recipe-title">${recipe.title}</h3>
+                                <p class="recipe-origin">${recipe.origin}</p>
+                                <div class="recipe-meta">
+                                    <div class="recipe-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="${
+                                          recipe.rating === 5
+                                            ? "fas"
+                                            : recipe.rating >= 4.5
+                                            ? "fas fa-star-half-alt"
+                                            : "far"
+                                        } fa-star"></i>
+                                        <span>(${recipe.rating}/5)</span>
+                                    </div>
+                                    <i class="fas fa-heart recipe-favorite active"></i>
+                                </div>
+                                <p class="recipe-description">${
+                                  recipe.description
+                                }</p>
+                                <div class="recipe-actions">
+                                    <button class="btn btn-primary view-recipe-saved">Lihat Resep</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+          }
+        });
+
+        savedRecipesHTML += "</div>";
+        savedRecipesContainer.innerHTML = savedRecipesHTML;
+
+        // Add event listeners to view recipe buttons in saved recipes
+        document.querySelectorAll(".view-recipe-saved").forEach((button) => {
+          button.addEventListener("click", function () {
+            const recipeCard = this.closest(".saved-recipe-card");
+            const recipeId = recipeCard.getAttribute("data-id");
+            showRecipeDetail(recipeId);
+          });
+        });
+      }
+
+      // Function to remove saved recipe
+      window.removeSavedRecipe = function (recipeId) {
+        let savedRecipes =
+          JSON.parse(localStorage.getItem("savedRecipes")) || [];
+        savedRecipes = savedRecipes.filter((id) => id !== recipeId);
+        localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+        displaySavedRecipes();
+      };
+
+      // Admin Functionality
+      const adminLoginBtn = document.getElementById("admin-login-btn");
+      const loginModal = document.getElementById("login-modal");
+      const adminPanel = document.getElementById("admin-panel");
+      const loginSubmit = document.getElementById("login-submit");
+      const adminPassword = document.getElementById("admin-password");
+      const loginError = document.getElementById("login-error");
+      const adminLogout = document.getElementById("admin-logout");
+      const adminTabs = document.querySelectorAll(".admin-tab");
+      const adminSections = document.querySelectorAll(".admin-section");
+
+      // Admin Data Management
+      let adminRecipes = JSON.parse(localStorage.getItem("adminRecipes")) || {};
+      let adminArticles =
+        JSON.parse(localStorage.getItem("adminArticles")) || {};
+
+      // Initialize admin data with existing data if empty
+      function initializeAdminData() {
+        if (Object.keys(adminRecipes).length === 0) {
+          adminRecipes = { ...recipesData };
+          localStorage.setItem("adminRecipes", JSON.stringify(adminRecipes));
+        }
+
+        if (Object.keys(adminArticles).length === 0) {
+          adminArticles = { ...articlesData };
+          localStorage.setItem("adminArticles", JSON.stringify(adminArticles));
+        }
+      }
+
+      // Admin Login
+      adminLoginBtn.addEventListener("click", function () {
+        loginModal.classList.add("active");
+      });
+
+      loginSubmit.addEventListener("click", function () {
+        if (adminPassword.value === "admin") {
+          loginModal.classList.remove("active");
+          adminPanel.classList.add("active");
+          document.body.style.overflow = "hidden"; // Prevent scrolling
+          initializeAdminData();
+          loadAdminRecipes();
+          loadAdminArticles();
+          loadAdminComments();
+        } else {
+          loginError.style.display = "block";
+        }
+      });
+
+      // Admin Logout
+      adminLogout.addEventListener("click", function () {
+        adminPanel.classList.remove("active");
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+        adminPassword.value = "";
+        loginError.style.display = "none";
+      });
+
+      // Admin Tab Navigation
+      adminTabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          const tabId = this.getAttribute("data-tab");
+
+          // Remove active class from all tabs
+          adminTabs.forEach((t) => t.classList.remove("active"));
+          // Add active class to clicked tab
+          this.classList.add("active");
+
+          // Hide all sections
+          adminSections.forEach((section) =>
+            section.classList.remove("active")
+          );
+          // Show selected section
+          document.getElementById(`${tabId}-section`).classList.add("active");
+        });
+      });
+
+      // Load Recipes for Admin
+      function loadAdminRecipes() {
+        const recipesList = document.getElementById("recipes-list");
+        recipesList.innerHTML = "";
+
+        Object.keys(adminRecipes).forEach((recipeId) => {
+          const recipe = adminRecipes[recipeId];
+          const recipeItem = document.createElement("div");
+          recipeItem.className = "admin-item";
+          recipeItem.innerHTML = `
+                    <div class="admin-item-info">
+                        <div class="admin-item-title">${recipe.title}</div>
+                        <div class="admin-item-meta">${recipe.origin} | Rating: ${recipe.rating}/5</div>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="admin-btn btn-edit" onclick="editRecipe('${recipeId}')">Edit</button>
+                        <button class="admin-btn btn-delete" onclick="deleteRecipe('${recipeId}')">Hapus</button>
+                    </div>
+                `;
+          recipesList.appendChild(recipeItem);
+        });
+      }
+
+      // Load Articles for Admin
+      function loadAdminArticles() {
+        const articlesList = document.getElementById("articles-list");
+        articlesList.innerHTML = "";
+
+        Object.keys(adminArticles).forEach((articleId) => {
+          const article = adminArticles[articleId];
+          const articleItem = document.createElement("div");
+          articleItem.className = "admin-item";
+          articleItem.innerHTML = `
+                    <div class="admin-item-info">
+                        <div class="admin-item-title">${article.title}</div>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="admin-btn btn-edit" onclick="editArticle('${articleId}')">Edit</button>
+                        <button class="admin-btn btn-delete" onclick="deleteArticle('${articleId}')">Hapus</button>
+                    </div>
+                `;
+          articlesList.appendChild(articleItem);
+        });
+      }
+
+      // Load Comments for Admin
+      function loadAdminComments() {
+        const commentsList = document.getElementById("comments-list");
+        commentsList.innerHTML = "";
+
+        const commentsData = getCommentsData();
+
+        Object.keys(commentsData).forEach((recipeId) => {
+          const recipeComments = commentsData[recipeId];
+          const recipe = adminRecipes[recipeId];
+
+          if (recipe) {
+            recipeComments.forEach((comment) => {
+              const commentItem = document.createElement("div");
+              commentItem.className = "admin-item";
+              commentItem.innerHTML = `
+                            <div class="admin-item-info">
+                                <div class="admin-item-title">Komentar pada: ${recipe.title}</div>
+                                <div class="admin-item-meta">Oleh: ${comment.author} | ${comment.date}</div>
+                                <div class="comment-content-preview">${comment.content}</div>
+                            </div>
+                            <div class="admin-actions">
+                                <button class="admin-btn btn-delete" onclick="deleteComment('${recipeId}', ${comment.id})">Hapus</button>
+                            </div>
+                        `;
+              commentsList.appendChild(commentItem);
+
+              // Add replies if any
+              if (comment.replies && comment.replies.length > 0) {
+                comment.replies.forEach((reply) => {
+                  const replyItem = document.createElement("div");
+                  replyItem.className = "admin-item";
+                  replyItem.style.marginLeft = "20px";
+                  replyItem.style.borderLeft = "3px solid var(--cream-medium)";
+                  replyItem.innerHTML = `
+                                    <div class="admin-item-info">
+                                        <div class="admin-item-title">Balasan</div>
+                                        <div class="admin-item-meta">Oleh: ${reply.author} | ${reply.date}</div>
+                                        <div class="comment-content-preview">${reply.content}</div>
+                                    </div>
+                                    <div class="admin-actions">
+                                        <button class="admin-btn btn-delete" onclick="deleteReply('${recipeId}', ${comment.id}, ${reply.id})">Hapus</button>
+                                    </div>
+                                `;
+                  commentsList.appendChild(replyItem);
+                });
+              }
+            });
+          }
+        });
+      }
+
+      // Add Recipe Functionality
+      document
+        .getElementById("add-recipe-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const title = document.getElementById("recipe-title").value;
+          const origin = document.getElementById("recipe-origin").value;
+          const image = document.getElementById("recipe-image").value;
+          const rating = parseFloat(
+            document.getElementById("recipe-rating").value
+          );
+          const description =
+            document.getElementById("recipe-description").value;
+          const ingredients = document
+            .getElementById("recipe-ingredients")
+            .value.split("\n")
+            .filter((item) => item.trim() !== "");
+          const steps = document
+            .getElementById("recipe-steps")
+            .value.split("\n")
+            .filter((item) => item.trim() !== "");
+          const category = document.getElementById("recipe-category").value;
+
+          // Generate a simple ID based on title and timestamp
+          const recipeId =
+            title.toLowerCase().replace(/\s+/g, "-") + "-" + Date.now();
+
+          adminRecipes[recipeId] = {
+            title,
+            origin,
+            image,
+            rating,
+            description,
+            ingredients,
+            steps,
+            category,
+          };
+
+          localStorage.setItem("adminRecipes", JSON.stringify(adminRecipes));
+
+          // Update the main recipes data
+          recipesData[recipeId] = adminRecipes[recipeId];
+
+          // Reset form
+          this.reset();
+
+          // Reload recipes list
+          loadAdminRecipes();
+
+          alert("Resep berhasil ditambahkan!");
+        });
+
+      // Add Article Functionality
+      document
+        .getElementById("add-article-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const title = document.getElementById("article-title").value;
+          const image = document.getElementById("article-image").value;
+          const content = document.getElementById("article-content").value;
+
+          // Generate a simple ID based on title and timestamp
+          const articleId =
+            title.toLowerCase().replace(/\s+/g, "-") + "-" + Date.now();
+
+          adminArticles[articleId] = {
+            title,
+            image,
+            content,
+          };
+
+          localStorage.setItem("adminArticles", JSON.stringify(adminArticles));
+
+          // Update the main articles data
+          articlesData[articleId] = adminArticles[articleId];
+
+          // Reset form
+          this.reset();
+
+          // Reload articles list
+          loadAdminArticles();
+
+          alert("Artikel berhasil ditambahkan!");
+        });
+
+      // Edit Recipe Function
+      window.editRecipe = function (recipeId) {
+        const recipe = adminRecipes[recipeId];
+
+        if (recipe) {
+          document.getElementById("recipe-title").value = recipe.title;
+          document.getElementById("recipe-origin").value = recipe.origin;
+          document.getElementById("recipe-image").value = recipe.image;
+          document.getElementById("recipe-rating").value = recipe.rating;
+          document.getElementById("recipe-description").value =
+            recipe.description;
+          document.getElementById("recipe-ingredients").value =
+            recipe.ingredients.join("\n");
+          document.getElementById("recipe-steps").value =
+            recipe.steps.join("\n");
+          document.getElementById("recipe-category").value =
+            recipe.category || "sumatera";
+
+          // Delete the old recipe
+          delete adminRecipes[recipeId];
+          delete recipesData[recipeId];
+
+          // Scroll to form
+          document
+            .getElementById("recipes-section")
+            .scrollIntoView({ behavior: "smooth" });
+        }
+      };
+
+      // Edit Article Function
+      window.editArticle = function (articleId) {
+        const article = adminArticles[articleId];
+
+        if (article) {
+          document.getElementById("article-title").value = article.title;
+          document.getElementById("article-image").value = article.image;
+          document.getElementById("article-content").value = article.content;
+
+          // Delete the old article
+          delete adminArticles[articleId];
+          delete articlesData[articleId];
+
+          // Scroll to form
+          document
+            .getElementById("articles-section")
+            .scrollIntoView({ behavior: "smooth" });
+        }
+      };
+
+      // Delete Recipe Function
+      window.deleteRecipe = function (recipeId) {
+        if (confirm("Apakah Anda yakin ingin menghapus resep ini?")) {
+          delete adminRecipes[recipeId];
+          delete recipesData[recipeId];
+
+          localStorage.setItem("adminRecipes", JSON.stringify(adminRecipes));
+          loadAdminRecipes();
+
+          alert("Resep berhasil dihapus!");
+        }
+      };
+
+      // Delete Article Function
+      window.deleteArticle = function (articleId) {
+        if (confirm("Apakah Anda yakin ingin menghapus artikel ini?")) {
+          delete adminArticles[articleId];
+          delete articlesData[articleId];
+
+          localStorage.setItem("adminArticles", JSON.stringify(adminArticles));
+          loadAdminArticles();
+
+          alert("Artikel berhasil dihapus!");
+        }
+      };
+
+      // Delete Comment Function
+      window.deleteComment = function (recipeId, commentId) {
+        if (confirm("Apakah Anda yakin ingin menghapus komentar ini?")) {
+          const commentsData = getCommentsData();
+
+          if (commentsData[recipeId]) {
+            commentsData[recipeId] = commentsData[recipeId].filter(
+              (comment) => comment.id !== commentId
+            );
+            saveCommentsData(commentsData);
+            loadAdminComments();
+
+            alert("Komentar berhasil dihapus!");
+          }
+        }
+      };
+
+      // Delete Reply Function
+      window.deleteReply = function (recipeId, commentId, replyId) {
+        if (confirm("Apakah Anda yakin ingin menghapus balasan ini?")) {
+          const commentsData = getCommentsData();
+
+          if (commentsData[recipeId]) {
+            const commentIndex = commentsData[recipeId].findIndex(
+              (comment) => comment.id === commentId
+            );
+
+            if (commentIndex !== -1) {
+              commentsData[recipeId][commentIndex].replies = commentsData[
+                recipeId
+              ][commentIndex].replies.filter((reply) => reply.id !== replyId);
+              saveCommentsData(commentsData);
+              loadAdminComments();
+
+              alert("Balasan berhasil dihapus!");
+            }
+          }
+        }
+      };
+
+      // Cancel buttons
+      document
+        .getElementById("cancel-recipe")
+        .addEventListener("click", function () {
+          document.getElementById("add-recipe-form").reset();
+        });
+
+      document
+        .getElementById("cancel-article")
+        .addEventListener("click", function () {
+          document.getElementById("add-article-form").reset();
+        });
+
+      // Close modal when clicking outside
+      loginModal.addEventListener("click", function (e) {
+        if (e.target === loginModal) {
+          loginModal.classList.remove("active");
+          loginError.style.display = "none";
+        }
+      });
+
+      // Initialize when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeComments();
+        initializeAdminData();
+      });
+    </script>
+  </body>
+</html>
